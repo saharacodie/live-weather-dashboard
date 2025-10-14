@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Weather Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background">
+    <div class="clouds"></div>
+    <div class="clouds clouds2"></div>
+    <div class="sun"></div>
+  </div>
+
+  <div class="dashboard">
+    <header>
+      <h1>🌦️ Live Weather Dashboard</h1>
+      <p class="subtitle">Check 5-day weather forecasts for Indian cities</p>
+
+      <div class="search-box">
+        <input id="searchInput" type="text" placeholder="Search for a city...">
+        <button onclick="searchCity()">Search</button>
+      </div>
+    </header>
+
+    <section class="cities" id="cityContainer">
+      <!-- Example: Delhi -->
+      <div class="city-card" data-city="delhi">
+        <h2>Delhi</h2>
+        <img src="https://cdn-icons-png.flaticon.com/512/1163/1163624.png" alt="Sunny">
+        <p class="temp">34°C</p>
+        <p class="desc">Sunny</p>
+        <div class="forecast">
+          <div>Mon 🌤️ 33°C</div>
+          <div>Tue ☁️ 30°C</div>
+          <div>Wed 🌦️ 29°C</div>
+          <div>Thu 🌤️ 34°C</div>
+          <div>Fri ☀️ 35°C</div>
+        </div>
+      </div>
+
+      <div class="city-card" data-city="mumbai">
+        <h2>Mumbai</h2>
+        <img src="https://cdn-icons-png.flaticon.com/512/1146/1146869.png" alt="Rainy">
+        <p class="temp">29°C</p>
+        <p class="desc">Rain Showers</p>
+        <div class="forecast">
+          <div>Mon 🌧️ 28°C</div>
+          <div>Tue 🌦️ 29°C</div>
+          <div>Wed 🌧️ 27°C</div>
+          <div>Thu ⛅ 30°C</div>
+          <div>Fri 🌦️ 28°C</div>
+        </div>
+      </div>
+
+      <div class="city-card" data-city="chennai">
+        <h2>Chennai</h2>
+        <img src="https://cdn-icons-png.flaticon.com/512/1163/1163661.png" alt="Partly Cloudy">
+        <p class="temp">32°C</p>
+        <p class="desc">Partly Cloudy</p>
+        <div class="forecast">
+          <div>Mon ☁️ 31°C</div>
+          <div>Tue 🌤️ 32°C</div>
+          <div>Wed ☀️ 33°C</div>
+          <div>Thu ⛅ 31°C</div>
+          <div>Fri 🌤️ 32°C</div>
+        </div>
+      </div>
+
+      <div class="city-card" data-city="bengaluru">
+        <h2>Bengaluru</h2>
+        <img src="https://cdn-icons-png.flaticon.com/512/1163/1163657.png" alt="Cloudy">
+        <p class="temp">27°C</p>
+        <p class="desc">Cloudy</p>
+        <div class="forecast">
+          <div>Mon ⛅ 27°C</div>
+          <div>Tue 🌧️ 26°C</div>
+          <div>Wed ☁️ 25°C</div>
+          <div>Thu 🌦️ 27°C</div>
+          <div>Fri ⛅ 28°C</div>
+        </div>
+      </div>
+
+      <div class="city-card" data-city="kolkata">
+        <h2>Kolkata</h2>
+        <img src="https://cdn-icons-png.flaticon.com/512/1163/1163640.png" alt="Thunderstorms">
+        <p class="temp">31°C</p>
+        <p class="desc">Thunderstorms</p>
+        <div class="forecast">
+          <div>Mon 🌩️ 30°C</div>
+          <div>Tue 🌦️ 31°C</div>
+          <div>Wed 🌩️ 29°C</div>
+          <div>Thu ⛅ 30°C</div>
+          <div>Fri 🌦️ 31°C</div>
+        </div>
+      </div>
+
+      <div class="city-card" data-city="hyderabad">
+        <h2>Hyderabad</h2>
+        <img src="https://cdn-icons-png.flaticon.com/512/1163/1163663.png" alt="Windy">
+        <p class="temp">30°C</p>
+        <p class="desc">Windy</p>
+        <div class="forecast">
+          <div>Mon 🌤️ 30°C</div>
+          <div>Tue 🌦️ 29°C</div>
+          <div>Wed ☁️ 28°C</div>
+          <div>Thu 🌩️ 30°C</div>
+          <div>Fri 🌤️ 29°C</div>
+        </div>
+      </div>
+
+      <div class="city-card" data-city="pune">
+        <h2>Pune</h2>
+        <img src="https://cdn-icons-png.flaticon.com/512/1163/1163662.png" alt="Drizzle">
+        <p class="temp">28°C</p>
+        <p class="desc">Drizzle</p>
+        <div class="forecast">
+          <div>Mon 🌦️ 28°C</div>
+          <div>Tue 🌧️ 27°C</div>
+          <div>Wed ⛅ 29°C</div>
+          <div>Thu 🌦️ 28°C</div>
+          <div>Fri ☁️ 27°C</div>
+        </div>
+      </div>
+
+      <div class="city-card" data-city="jaipur">
+        <h2>Jaipur</h2>
+        <img src="https://cdn-icons-png.flaticon.com/512/1163/1163675.png" alt="Clear Sky">
+        <p class="temp">35°C</p>
+        <p class="desc">Clear Sky</p>
+        <div class="forecast">
+          <div>Mon ☀️ 35°C</div>
+          <div>Tue ☀️ 34°C</div>
+          <div>Wed 🌤️ 33°C</div>
+          <div>Thu ☀️ 35°C</div>
+          <div>Fri ☀️ 34°C</div>
+        </div>
+  
+      </div>
+            <div class="city-card" data-city="new york">
+        <h2>New York</h2>
+        <img src="https://cdn-icons-png.flaticon.com/512/1163/1163634.png" alt="Snowy">
+        <p class="temp">10°C</p>
+        <p class="desc">Snowy</p>
+        <div class="forecast">
+          <div>Mon 🌨️ 8°C</div>
+          <div>Tue 🌨️ 9°C</div>
+          <div>Wed ☁️ 11°C</div>
+          <div>Thu 🌧️ 10°C</div>
+          <div>Fri 🌨️ 8°C</div>
+        </div>
+      </div>
+
+      <div class="city-card" data-city="london">
+        <h2>London</h2>
+        <img src="https://cdn-icons-png.flaticon.com/512/1163/1163657.png" alt="Cloudy">
+        <p class="temp">14°C</p>
+        <p class="desc">Cloudy</p>
+        <div class="forecast">
+          <div>Mon ☁️ 13°C</div>
+          <div>Tue 🌧️ 12°C</div>
+          <div>Wed ⛅ 14°C</div>
+          <div>Thu ☁️ 13°C</div>
+          <div>Fri 🌦️ 12°C</div>
+        </div>
+      </div>
+
+      <div class="city-card" data-city="dubai">
+        <h2>Dubai</h2>
+        <img src="https://cdn-icons-png.flaticon.com/512/1163/1163624.png" alt="Hot">
+        <p class="temp">39°C</p>
+        <p class="desc">Hot & Sunny</p>
+        <div class="forecast">
+          <div>Mon ☀️ 39°C</div>
+          <div>Tue ☀️ 40°C</div>
+          <div>Wed ☀️ 41°C</div>
+          <div>Thu 🌤️ 38°C</div>
+          <div>Fri ☀️ 39°C</div>
+        </div>
+      </div>
+
+      <div class="city-card" data-city="paris">
+        <h2>Paris</h2>
+        <img src="https://cdn-icons-png.flaticon.com/512/1163/1163640.png" alt="Drizzle">
+        <p class="temp">18°C</p>
+        <p class="desc">Light Rain</p>
+        <div class="forecast">
+          <div>Mon 🌧️ 17°C</div>
+          <div>Tue 🌦️ 18°C</div>
+          <div>Wed ⛅ 19°C</div>
+          <div>Thu 🌧️ 17°C</div>
+          <div>Fri 🌤️ 18°C</div>
+        </div>
+      </div>
+
+     <div class="city-card" data-city="tokyo">
+        <h2>Tokyo</h2>
+        <img src="https://cdn-icons-png.flaticon.com/512/3026/3026375.png" alt="Windy">
+        <p class="temp">24°C</p>
+        <p class="desc">Windy</p>
+        <div class="forecast">
+          <div>Mon 🌤 25°C</div>
+          <div>Tue 🌦 24°C</div>
+          <div>Wed 🌩 23°C</div>
+          <div>Thu ⛅ 24°C</div>
+          <div>Fri ☀ 25°C</div>
+        </div>
+      </div>
+
+      <div class="city-card" data-city="sydney">
+        <h2>Sydney</h2>
+        <img src="https://cdn-icons-png.flaticon.com/512/1163/1163661.png" alt="Partly Cloudy">
+        <p class="temp">21°C</p>
+        <p class="desc">Partly Cloudy</p>
+        <div class="forecast">
+          <div>Mon ⛅ 21°C</div>
+          <div>Tue 🌦️ 20°C</div>
+          <div>Wed ☀️ 22°C</div>
+          <div>Thu ⛅ 21°C</div>
+          <div>Fri 🌤️ 23°C</div>
+        </div>
+      </div>
+
+    </section>
+
+    <footer>
+      <p> Example Weather Data | © 2025</p>
+    </footer>
+  </div>
+
+  <script>
+    function searchCity() {
+      const input = document.getElementById("searchInput").value.toLowerCase().trim();
+      const cards = document.querySelectorAll(".city-card");
+
+      cards.forEach(card => {
+        const city = card.getAttribute("data-city");
+        card.style.display = city.includes(input) || input === "" ? "block" : "none";
+      });
+    }
+
+    document.getElementById("searchInput").addEventListener("input", searchCity);
+  </script>
+</body>
+</html>
+

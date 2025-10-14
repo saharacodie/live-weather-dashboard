@@ -1,0 +1,227 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+  color: #fff;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* --- Animated Background --- */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.sun {
+  position: absolute;
+  top: 80px;
+  left: 120px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, #ffeb3b, #fbc02d);
+  border-radius: 50%;
+  box-shadow: 0 0 50px #ffeb3b;
+  animation: rotateSun 30s linear infinite;
+}
+
+@keyframes rotateSun {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.clouds, .clouds2 {
+  position: absolute;
+  background: url("https://i.imgur.com/mnZ1yqF.png");
+  background-repeat: repeat-x;
+  width: 200%;
+  height: 300px;
+  opacity: 0.4;
+  animation: moveClouds 60s linear infinite;
+}
+
+.clouds2 {
+  top: 100px;
+  opacity: 0.3;
+  animation-duration: 90s;
+}
+
+@keyframes moveClouds {
+  from { background-position-x: 0; }
+  to { background-position-x: -1000px; }
+}
+
+/* --- Dashboard Content --- */
+.dashboard {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 60px 0;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.4);
+}
+
+.subtitle {
+  color: #f1f1f1;
+  font-size: 1rem;
+  margin-bottom: 25px;
+}
+
+/* Search Bar */
+.search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.search-box input {
+  width: 250px;
+  padding: 10px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.search-box input:focus {
+  box-shadow: 0 0 15px #ffeb3b;
+}
+
+.search-box button {
+  padding: 10px 20px;
+  background: #ffeb3b;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search-box button:hover {
+  background: #fbc02d;
+}
+
+/* City Cards */
+.cities {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.city-card {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  padding: 20px;
+  width: 220px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  transition: 0.4s ease;
+  position: relative;
+}
+
+.city-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+.city-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 15px;
+  background: radial-gradient(circle, rgba(255,255,255,0.15), transparent);
+  z-index: -1;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.city-card h2 {
+  color: #ffeb3b;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.city-card img {
+  width: 80px;
+  height: 80px;
+  margin: 10px 0;
+}
+
+.temp {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.desc {
+  font-size: 1rem;
+  color: #eee;
+  margin-bottom: 15px;
+}
+
+.forecast {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.forecast div {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 4px;
+}
+
+.forecast div:last-child {
+  border-bottom: none;
+}
+
+footer {
+  margin-top: 40px;
+  color: #ddd;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  .city-card {
+    width: 90%;
+  }
+}
+
+
+
+
+
+
